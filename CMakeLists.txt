@@ -22,7 +22,7 @@ set(HEADERS
 )
 
 set(TESTS
-    src/test.cpp
+    test/test.cpp
 )
 
 set(LIBS
@@ -33,3 +33,8 @@ add_executable(Schotten-Totten src/main.cpp ${SRCS} ${HEADERS})
 target_compile_features(Schotten-Totten PRIVATE cxx_std_17)
 target_include_directories(Schotten-Totten PUBLIC src/)
 target_link_libraries(Schotten-Totten ${LIBS})
+
+add_executable(run_tests ${TESTS} ${SRCS} ${HEADERS})
+target_compile_features(run_tests PRIVATE cxx_std_17)
+target_include_directories(run_tests PUBLIC src/)
+target_link_libraries(run_tests PRIVATE doctest::doctest ${LIBS})
